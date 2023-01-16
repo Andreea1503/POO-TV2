@@ -1,10 +1,4 @@
 Starting audit...
-[ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\database\change_page\ChangePageToMovies.java:24: Line is longer than 100 characters (found 117). [LineLength]
-[ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\database\change_page\ChangePageToMovies.java:76: Line is longer than 100 characters (found 122). [LineLength]
-[ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\database\change_page\ChangePageToSeeDetails.java:24: Line is longer than 100 characters (found 121). [LineLength]
-[ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\database\change_page\ChangePageToSeeDetails.java:83: Line is longer than 100 characters (found 126). [LineLength]
-[ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\database\change_page\ChangePageToUpgrades.java:59: Line is longer than 100 characters (found 119). [LineLength]
-[ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\database\change_page\ChangePageToUpgrades.java:61: Line is longer than 100 characters (found 122). [LineLength]
 [ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\database\Database.java:42:39: Inner assignments should be avoided. [InnerAssignment]
 [ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\database\Database.java:102: Line is longer than 100 characters (found 114). [LineLength]
 [ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\database\Database.java:108:5: Missing a Javadoc comment. [MissingJavadocMethod]
@@ -126,4 +120,4 @@ Starting audit...
 [ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\Test.java:222: Line is longer than 100 characters (found 108). [LineLength]
 [ERROR] C:\Users\Andreea\Desktop\proiectPOO\oop-asignments-master\proiect2\.\src\write\Write.java:151:5: Missing a Javadoc comment. [MissingJavadocMethod]
 Audit done.
-Checkstyle ends with 126 errors.
+Checkstyle ends with 120 errors.

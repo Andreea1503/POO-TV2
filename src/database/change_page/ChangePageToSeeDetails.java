@@ -21,7 +21,8 @@ public class ChangePageToSeeDetails implements ChangePageAction {
     private Stack<Page> pages;
 
     public ChangePageToSeeDetails(final ActionsInput action, final Page currentPage,
-                                  final ArrayList<MoviesInput> movies, final ArrayNode output, final Stack<Page> pages) {
+                                  final ArrayList<MoviesInput> movies, final ArrayNode output,
+                                  final Stack<Page> pages) {
         this.action = action;
         this.currentPage = currentPage;
         this.movies = movies;
@@ -80,7 +81,8 @@ public class ChangePageToSeeDetails implements ChangePageAction {
                     action, currentPage.getCurrentUser().getCurrentMoviesList());
 
             if (allowedMovie != null) {
-                pages.push(new Page(currentPage.getCurrentPageName(), currentPage.getCurrentUser(), currentPage.getAction()));
+                pages.push(new Page(currentPage.getCurrentPageName(),
+                        currentPage.getCurrentUser(), currentPage.getAction()));
                 currentPage.setCurrentPageName("see details");
                 currentPage.getCurrentUser().setCurrentMoviesList(new ArrayList<>());
                 currentPage.setAction(action);

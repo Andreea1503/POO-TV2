@@ -56,9 +56,11 @@ public class ChangePageToUpgrades implements ChangePageAction {
      */
     @Override
     public void execute() {
-        if (currentPage.getCurrentPageName().equals("see details") || currentPage.getCurrentPageName().equals("movies")
+        if (currentPage.getCurrentPageName().equals("see details")
+                || currentPage.getCurrentPageName().equals("movies")
                 || currentPage.getCurrentPageName().equals("Homepage autentificat")) {
-            pages.push(new Page(currentPage.getCurrentPageName(), currentPage.getCurrentUser(), currentPage.getAction()));
+            pages.push(new Page(currentPage.getCurrentPageName(), currentPage.getCurrentUser(),
+                    currentPage.getAction()));
             currentPage.setCurrentPageName("upgrades");
         } else {
             action.setError("Error");

@@ -21,7 +21,8 @@ public class ChangePageToMovies implements ChangePageAction {
     private Stack<Page> pages;
 
     public ChangePageToMovies(final ActionsInput action, final Page currentPage,
-                              final ArrayList<MoviesInput> movies, final ArrayNode output, final Stack<Page> pages) {
+                              final ArrayList<MoviesInput> movies, final ArrayNode output,
+                              final Stack<Page> pages) {
         this.action = action;
         this.currentPage = currentPage;
         this.movies = movies;
@@ -73,7 +74,8 @@ public class ChangePageToMovies implements ChangePageAction {
                 || currentPage.getCurrentPageName().equals("see details")
                 || currentPage.getCurrentPageName().equals("upgrades"))
                 && currentPage.getCurrentUser() != null) {
-            pages.push(new Page(currentPage.getCurrentPageName(), currentPage.getCurrentUser(), currentPage.getAction()));
+            pages.push(new Page(currentPage.getCurrentPageName(), currentPage.getCurrentUser(),
+                    currentPage.getAction()));
             currentPage.setCurrentPageName("movies");
             MoviesInput movie = new MoviesInput();
             currentPage.getCurrentUser().setCurrentMoviesList(
