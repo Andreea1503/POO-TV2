@@ -8,6 +8,9 @@ import write.Write;
 
 import java.util.ArrayList;
 
+/**
+ * Class that represents the add action
+ */
 public class AddAction implements Action {
     private ArrayList<MoviesInput> movies;
     private ArrayNode output;
