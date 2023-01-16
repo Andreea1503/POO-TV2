@@ -29,7 +29,8 @@ public class PurchaseAction implements OnPageAction {
      */
     @Override
     public void execute() {
-        if (!currentPage.getCurrentUser().getPurchasedMovies().contains(MoviesInput.seeDetails(currentPage.getAction(),
+        if (!currentPage.getCurrentUser().getPurchasedMovies()
+                .contains(MoviesInput.seeDetails(currentPage.getAction(),
                 currentPage.getCurrentUser().getCurrentMoviesList()))) {
             MoviesInput purchasedMovie = purchaseMovieOnAccount(currentPage);
 
@@ -57,7 +58,8 @@ public class PurchaseAction implements OnPageAction {
      * @return the purchased movie
      */
     private MoviesInput purchaseMovieOnAccount(final Page currentPage) {
-        MoviesInput purchasedMovie = MoviesInput.seeDetails(currentPage.getAction(),currentPage.getCurrentUser().getCurrentMoviesList());
+        MoviesInput purchasedMovie = MoviesInput.seeDetails(currentPage.getAction(),
+                currentPage.getCurrentUser().getCurrentMoviesList());
         PurchasingStrategy strategy;
         if (currentPage.getCurrentUser().getCredentials().getAccountType().equals("premium")) {
             strategy = new PremiumPurchasingStrategy();

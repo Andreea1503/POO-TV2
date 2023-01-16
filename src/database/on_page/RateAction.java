@@ -51,16 +51,13 @@ public class RateAction implements OnPageAction {
                     && action.getRate() <= maximumRating) {
                 ratedMovie.setMovieRating(ratedMovie.getMovieRating() + action.getRate());
 
-                ratedMovie.setRating((double) ratedMovie.getMovieRating() / (ratedMovie.getNumRatings() + 1 ));
+                ratedMovie.setRating((double) ratedMovie.getMovieRating()
+                        / (ratedMovie.getNumRatings() + 1));
 
                 if (!currentPage.getCurrentUser().getRatedMovies().contains(ratedMovie)) {
                     ratedMovie.setNumRatings(ratedMovie.getNumRatings() + 1);
                     currentPage.getCurrentUser().getRatedMovies().add(ratedMovie);
                 }
-
-
-
-
 
                 Write.writePageError(currentPage.getCurrentUser(), action, output);
                 } else {

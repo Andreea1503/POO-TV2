@@ -52,6 +52,10 @@ public class UsersInput implements Observer {
         this.rated = false;
     }
 
+    /**
+     * The update method updates the observer with the new notification.
+     * @param notification an object representing the new notification
+     */
     @Override
     public void update(final Notification notification) {
         this.notifications.add(notification);
@@ -197,7 +201,7 @@ public class UsersInput implements Observer {
      * Method that sets the notifications received by the user
      * @param notifications
      */
-    public void setNotifications(ArrayList<Notification> notifications) {
+    public void setNotifications(final ArrayList<Notification> notifications) {
         this.notifications = notifications;
     }
 
@@ -213,15 +217,23 @@ public class UsersInput implements Observer {
      * Method that sets the list of subscribed genres of the user
      * @param subscribedGenres
      */
-    public void setSubscribedGenres(ArrayList<String> subscribedGenres) {
+    public void setSubscribedGenres(final ArrayList<String> subscribedGenres) {
         this.subscribedGenres = subscribedGenres;
     }
 
+    /**
+     * Method that returns the rated status of the user
+     * @return rated
+     */
     public boolean isRated() {
         return rated;
     }
 
-    public void setRated(boolean rated) {
+    /**
+     * Method that sets the rated status of the user
+     * @param rated
+     */
+    public void setRated(final boolean rated) {
         this.rated = rated;
     }
 }

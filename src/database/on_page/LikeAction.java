@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import input.action.ActionsInput;
 import input.movie.MoviesInput;
 
+import java.util.ArrayList;
+
 /**
  * Class that implements the like action
  */
@@ -44,15 +46,14 @@ public class LikeAction implements OnPageAction {
             MoviesInput likedMovie = movie.isInList(
                     currentPage.getCurrentUser().getWatchedMovies(), watchedMovie.getName());
 
-                if (likedMovie != null &&
-                        currentPage.getCurrentPageName().equals("see details")) {
-                    if (!currentPage.getCurrentUser().getLikedMovies().contains(likedMovie)) {
-                        currentPage.getCurrentUser().getLikedMovies().add(likedMovie);
-                        currentPage.getCurrentUser().getLikedMovies().get(
-                                currentPage.getCurrentUser().getLikedMovies().size() - 1).setNumLikes(
-                                currentPage.getCurrentUser().getLikedMovies().get(
-                                        currentPage.getCurrentUser().getLikedMovies().size()
-                                                - 1).getNumLikes() + 1);
+                if (likedMovie != null
+                        && currentPage.getCurrentPageName().equals("see details")) {
+                    ArrayList<MoviesInput> likedMovies = currentPage.getCurrentUser()
+                            .getLikedMovies();
+                    if (!likedMovies.contains(likedMovie)) {
+                        likedMovies.add(likedMovie);
+                        likedMovies.get(likedMovies.size() - 1).setNumLikes(
+                                likedMovies.get(likedMovies.size() - 1).getNumLikes() + 1);
                     }
                     Write.writePageError(currentPage.getCurrentUser(), action, output);
                 } else {

@@ -22,16 +22,13 @@ public final class Main {
     public static void main(final String[] args) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         Input input = objectMapper.readValue(new File(args[0]), Input.class);
-//        Input input = objectMapper.readValue(new File("C:\\Users\\Andreea\\Desktop\\proiectPOO\\oop-asignments-master\\proiect2\\checker\\resources\\in\\basic_9.json"), Input.class);
         ArrayNode output = objectMapper.createArrayNode();
         Database database = Database.getInstance();
         database.databaseNavigation(input.getActions(), input.getUsers(), input.getMovies(),
                 output);
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
-        objectWriter.writeValue(new File(args[0].replace("in", "out")), output);
         objectWriter.writeValue(new File(args[1]), output);
-//        objectWriter.writeValue(new File("checker/resources/out/out_9.json"), output);
 
         database.destroy();
     }

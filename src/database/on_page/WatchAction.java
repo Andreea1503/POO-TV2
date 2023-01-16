@@ -29,7 +29,7 @@ public class WatchAction implements OnPageAction {
      */
     @Override
     public void execute() {
-        if (!currentPage.getCurrentPageName().equals("see details")){
+        if (!currentPage.getCurrentPageName().equals("see details")) {
             action.setError("Error");
             Write.writePageError(null, action, output);
             return;

@@ -55,7 +55,8 @@ public class BuyTokensAction implements OnPageAction {
             ).getBalance());
             balance -= Integer.valueOf(action.getCount());
             currentPage.getCurrentUser().getCredentials().setBalance(String.valueOf(balance));
-            currentPage.getCurrentUser().setTokensCount(Integer.valueOf(action.getCount()) + currentPage.getCurrentUser().getTokensCount());
+            currentPage.getCurrentUser().setTokensCount(Integer.valueOf(action.getCount())
+                    + currentPage.getCurrentUser().getTokensCount());
         } else {
             action.setError("Error");
             Write.writePageError(null, action, output);

@@ -1,21 +1,26 @@
 package database.database_action;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import database.Database;
-import database.on_page.subscription.MovieGenre;
 import input.action.ActionsInput;
 import input.movie.MoviesInput;
 import input.user.UsersInput;
-import write.Write;
 
 import java.util.ArrayList;
 
-public class DatabaseAction {
+/**
+ * Singleton class that encapsulates database actions.
+ */
+public final class DatabaseAction {
     private static volatile DatabaseAction instance;
     private DatabaseAction() {
 
     }
 
+    /**
+     * Returns a singleton instance of the DatabaseAction class.
+     *
+     * @return the singleton instance of the DatabaseAction class
+     */
     public static DatabaseAction getInstance() {
         DatabaseAction result = instance;
         if (result == null) {
@@ -29,7 +34,17 @@ public class DatabaseAction {
         return result;
     }
 
-    public static void databaseAction(ArrayList<MoviesInput> movies, ActionsInput action, ArrayNode output, ArrayList<UsersInput> users) {
+    /**
+     * Executes a database action based on the provided action input.
+     *
+     * @param movies   list of movies
+     * @param action   input action
+     * @param output   output JSON object
+     * @param users    list of users
+     */
+    public static void databaseAction(final ArrayList<MoviesInput> movies,
+                                      final ActionsInput action,
+                                      final ArrayNode output, final ArrayList<UsersInput> users) {
         Action databaseAction = DatabaseActionFactory.getAction(action, movies, output, users);
         databaseAction.execute();
     }

@@ -148,6 +148,11 @@ public final class Write {
         return user;
     }
 
+    /**
+     * Method that writes the output for the recommendation
+     * @param currentUser
+     * @param output
+     */
     public static void writeReccomandation(final UsersInput currentUser,
                                            final ArrayNode output) {
         ObjectNode loginError = objectMapper.createObjectNode();

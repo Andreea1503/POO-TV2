@@ -29,7 +29,8 @@ public class Page {
         this.currentPageName = currentPageName;
     }
 
-    public Page(final String currentPageName, final UsersInput currentUser, final ActionsInput action) {
+    public Page(final String currentPageName, final UsersInput currentUser,
+                final ActionsInput action) {
         this.currentPageName = currentPageName;
         this.currentUser = currentUser;
         this.action = action;
@@ -110,14 +111,24 @@ public class Page {
      * @param pages
      */
     public void changePageAction(final ActionsInput action, final Page currentPage,
-                                 final ArrayList<MoviesInput> movies, final ArrayNode output, Stack<Page> pages) {
+                                 final ArrayList<MoviesInput> movies,
+                                 final ArrayNode output, final Stack<Page> pages) {
         ChangePageAction changePageAction = ChangePageActionFactory.
                 getAction(action.getPage(), action, currentPage, movies, output, pages);
         changePageAction.execute();
     }
 
+    /**
+     * The backAction method allows the user to navigate to the previously visited page.
+     * @param action an object representing an action performed by the user
+     * @param currentPage the current page the user is on
+     * @param output an object used to write JSON output
+     * @param pages a stack of pages the user has visited
+     * @param movies a list of movies
+     */
     public void backAction(final ActionsInput action, final Page currentPage,
-                           final ArrayNode output, Stack<Page> pages, final ArrayList<MoviesInput> movies) {
+                           final ArrayNode output, final Stack<Page> pages,
+                           final ArrayList<MoviesInput> movies) {
         if (currentPage.getCurrentUser() != null && !pages.isEmpty()) {
             Page newPage = null;
             if (!pages.isEmpty()) {
@@ -133,7 +144,8 @@ public class Page {
             }
 
             ChangePageAction changePageAction = ChangePageActionFactory.
-                    getAction(newPage.getCurrentPageName(), action, currentPage, movies, output, pages);
+                    getAction(newPage.getCurrentPageName(), action, currentPage, movies, output,
+                            pages);
             if (changePageAction != null) {
                 changePageAction.execute();
                 pages.pop();

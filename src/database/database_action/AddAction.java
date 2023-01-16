@@ -14,7 +14,8 @@ public class AddAction implements Action {
 
     private ActionsInput action;
 
-    public AddAction(final ArrayList<MoviesInput> movies, final ArrayNode output, final ActionsInput action) {
+    public AddAction(final ArrayList<MoviesInput> movies, final ArrayNode output,
+                     final ActionsInput action) {
         this.movies = movies;
         this.output = output;
         this.action = action;

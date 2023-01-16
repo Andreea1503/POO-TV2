@@ -138,7 +138,8 @@ public class MoviesInput {
                                                        final UsersInput currentUser) {
         ArrayList<MoviesInput> allowedMovies = new ArrayList<>(movies);
 
-        if (currentUser != null && currentUser.getCredentials() != null && currentUser.getCredentials().getCountry().length() > 0) {
+        if (currentUser != null && currentUser.getCredentials() != null
+                && currentUser.getCredentials().getCountry().length() > 0) {
             for (int i = 0; i < currentUser.getCredentials().getCountry().length(); i++) {
                 allowedMovies.removeIf(movie -> movie.getCountriesBanned().
                         contains(currentUser.getCredentials().getCountry()));
@@ -296,7 +297,7 @@ public class MoviesInput {
      * @param movie
      * @return rating
      */
-    public Double rating(final MoviesInput movie, boolean isRated, final Integer newRating) {
+    public Double rating(final MoviesInput movie, final boolean isRated, final Integer newRating) {
         if (movie.getNumRatings() > 0) {
             if (isRated) {
                 return ((double) (movieRating + newRating)  / (movie.getNumRatings() + 1));

@@ -12,13 +12,17 @@ import write.Write;
 
 import java.util.ArrayList;
 
+/**
+ * Class representing the delete action from the database.
+ */
 public class DeleteAction implements Action {
     private final ArrayList<MoviesInput> movies;
     private final ArrayNode output;
     private final ActionsInput action;
     private final ArrayList<UsersInput> users;
 
-    public DeleteAction(final ArrayList<MoviesInput> movies, final ArrayNode output, final ActionsInput action, final ArrayList<UsersInput> users) {
+    public DeleteAction(final ArrayList<MoviesInput> movies, final ArrayNode output,
+                        final ActionsInput action, final ArrayList<UsersInput> users) {
         this.movies = movies;
         this.output = output;
         this.action = action;
@@ -45,16 +49,30 @@ public class DeleteAction implements Action {
         deleteMovieForUser(movieToDelete, users);
     }
 
-    private static void deleteMovieForUser(MoviesInput movieToBeDeleted, ArrayList<UsersInput> users) {
+    /**
+     * Helper method that deletes a movie from a user's purchased movie list and returns user's
+     * properties
+     *
+     * @param movieToBeDeleted the movie to be deleted
+     * @param users list of users
+     */
+    private static void deleteMovieForUser(final MoviesInput movieToBeDeleted,
+                                           final ArrayList<UsersInput> users) {
         for (UsersInput user : users) {
-            if (user.getPurchasedMovies() != null && user.getPurchasedMovies().contains(movieToBeDeleted)) {
+            if (user.getPurchasedMovies() != null
+                    && user.getPurchasedMovies().contains(movieToBeDeleted)) {
                 user.getPurchasedMovies().remove(movieToBeDeleted);
                 returnProperties(user);
             }
         }
     }
 
-    private static void returnProperties(UsersInput user) {
+    /**
+     * Helper method that returns properties based on the user's account type
+     *
+     * @param user the user for which to return the properties
+     */
+    private static void returnProperties(final UsersInput user) {
         ReturnPropertiesStrategy strategy;
         if (user.getCredentials().getAccountType().equals("premium")) {
             strategy = new PremiumReturnPropertiesStrategy();

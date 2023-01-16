@@ -10,6 +10,9 @@ import input.user.UsersInput;
 import write.Write;
 import java.util.ArrayList;
 
+/**
+ * Class that implements the subscribe action
+ */
 public class SubscribeAction implements OnPageAction {
     private ArrayList<UsersInput> users;
     private ActionsInput action;
@@ -24,19 +27,31 @@ public class SubscribeAction implements OnPageAction {
         this.output = output;
     }
 
+
+    /**
+     * Method that executes the action of subscribing to a genre.
+     * It checks if the current page is 'see details' and if the user is not already
+     * subscribed to the genre.
+     * If the conditions are met, it adds the genre to the user's subscribed genres and
+     * updates the database.
+     * If the conditions are not met, it sets an error message in the output.
+     * */
     @Override
     public void execute() {
-        if (currentPage.getCurrentPageName().equals("see details") && !currentPage.getCurrentUser().getSubscribedGenres().contains(action.getSubscribedGenre())) {
-            for (MoviesInput movie : currentPage.getCurrentUser().getCurrentMoviesList()) {
+        UsersInput currentUser = currentPage.getCurrentUser();
+        if (currentPage.getCurrentPageName().equals("see details")
+                && !currentUser.getSubscribedGenres()
+                .contains(action.getSubscribedGenre())) {
+            for (MoviesInput movie : currentUser.getCurrentMoviesList()) {
                 if (!movie.getGenres().contains(action.getSubscribedGenre())) {
                     action.setError("Error");
                     Write.writePageError(null, action, output);
                     return;
                 }
             }
-            currentPage.getCurrentUser().getSubscribedGenres().add(action.getSubscribedGenre());
+            currentUser.getSubscribedGenres().add(action.getSubscribedGenre());
             Database database = Database.getInstance();
-            database.getGenre().subscribe(currentPage.getCurrentUser(), action.getSubscribedGenre());
+            database.getGenre().subscribe(currentUser, action.getSubscribedGenre());
         } else {
             action.setError("Error");
             Write.writePageError(null, action, output);

@@ -99,12 +99,16 @@ public final class Database {
         }
         if (currentPage.getCurrentUser().getCredentials().getAccountType().equals("premium")) {
             MoviesInput movie = new MoviesInput();
-            Recommendation recommendation = new Recommendation(currentPage.getCurrentUser().getSubscribedGenres(),
-                    movie.allowedMoviesForUser(movies, currentPage.getCurrentUser()));
+            Recommendation recommendation = new Recommendation(currentPage.getCurrentUser()
+                    .getSubscribedGenres(), movie.allowedMoviesForUser(movies,
+                    currentPage.getCurrentUser()));
             recommendation.notify(currentPage.getCurrentUser(), output);
         }
     }
 
+    /**
+     * Method that resets the database.
+     */
     public void destroy() {
         instance = null;
     }
